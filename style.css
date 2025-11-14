@@ -298,6 +298,35 @@ section {
 }
 .service-charge-note i { font-size: 1.2em; margin-right: 10px; margin-top: 4px; }
 .service-charge-note p { margin: 0; }
+.delivery-calculator {
+    background-color: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.delivery-calculator h4 {
+    margin-top: 0;
+}
+.sector-select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-bottom: 10px;
+}
+.delivery-result {
+    font-weight: bold;
+    margin-top: 10px;
+    min-height: 20px;
+    color: #fff;
+}
 
 #booking-form {
     padding: 40px;
