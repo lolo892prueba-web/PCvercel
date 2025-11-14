@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-Repair | Citas para Reparaciones</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>TECH-REPAIR</h1>
+        <p>Soluciones Rápidas para tus Dispositivos</p>
+    </header>
+
+    <main>
+        <section class="services-panel">
+            <h2>Nuestros Servicios</h2>
+            <div class="stripe-divider"></div>
+            <div class="service-cards">
+                <div class="card">
+                    <i class="fas fa-laptop-code card-icon"></i>
+                    <h3>Reparación de Laptops</h3>
+                    <p>Problemas de hardware, software, pantallas rotas y más.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-desktop card-icon"></i>
+                    <h3>Reparación de PCs</h3>
+                    <p>Optimización, montaje de componentes y solución de errores.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-print card-icon"></i>
+                    <h3>Reparación de Impresoras</h3>
+                    <p>Atascos de papel, problemas de tinta y fallos de conexión.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-panel">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h2>Agenda tu Cita</h2>
+                    <div class="stripe-divider left"></div>
+                    <p>Completa el formulario y nos pondremos en contacto a la brevedad para confirmar tu cita. ¡Recupera el rendimiento de tus equipos con nosotros!</p>
+                    <div class="direct-contact">
+                        <h4>O contáctanos directamente:</h4>
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>+1 (XXX) XXX-XXXX</strong></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Estamos en: <strong>Moca, República Dominicana</strong></p>
+                    </div>
+                </div>
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Ubicación (Solo Moca, R.D.):</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="device">Tipo de Dispositivo:</label>
+                        <select id="device" name="device">
+                            <option value="laptop">Laptop</option>
+                            <option value="pc">PC de Escritorio</option>
+                            <option value="printer">Impresora</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue">Describe el Problema:</label>
+                        <textarea id="issue" name="issue" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/+1XXXXXXXXXX" class="whatsapp-float" target="_blank" data-tooltip="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="main-footer">
+        <p>Tech-Repair | Moca, República Dominicana | Tel/WhatsApp: +1 (XXX) XXX-XXXX</p>
+        <p>&copy; 2024 Tech-Repair. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Firebase SDK (colócalo antes de tu propio script.js) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <!-- Agrega otros servicios de Firebase que necesites, como Auth, Storage, etc. -->
+    <script src="script.js"></script> <!-- Tu archivo JavaScript para la lógica de la aplicación -->
+</body>
+</html>
