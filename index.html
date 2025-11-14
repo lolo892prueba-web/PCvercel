@@ -24,13 +24,16 @@
     <header class="main-header">
         <nav class="navbar">
             <a href="#hero" class="nav-logo">HERCOM</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item"><a href="#services" class="nav-link">Servicios</a></li>
                 <li class="nav-item"><a href="#parts" class="nav-link">Componentes</a></li>
                 <li class="nav-item"><a href="#booking" class="nav-link">Agendar Cita</a></li>
                 <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonios</a></li>
                 <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-moon"></i></button></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -71,7 +74,11 @@
         <section id="parts" class="parts-panel">
             <h2>Venta de Componentes</h2>
             <div class="stripe-divider"></div>
-            <p class="section-subtitle">Encuentra piezas nuevas y de segunda mano para potenciar o reparar tus equipos.</p>
+            <p class="section-subtitle">Piezas nuevas y de segunda mano para tus equipos. <br>
+                <strong class="delivery-info">
+                    <i class="fas fa-motorcycle"></i> Pago contra entrega | Costo de delivery adicional | Solo en Moca
+                </strong>
+            </p>
             <div class="parts-container">
                 <!-- Ejemplo de producto -->
                 <div class="part-card">
@@ -81,7 +88,7 @@
                         <h3 class="part-title">Disco de Estado Sólido (SSD) 500GB</h3>
                         <p class="part-description">Aumenta la velocidad de tu equipo 10 veces. Ideal para sistema operativo y programas.</p>
                         <p class="part-price">$85.00</p>
-                        <a href="https://wa.me/11234567890?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20de%20Estado%20Sólido%20(SSD)%20500GB'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20de%20Estado%20Sólido%20(SSD)%20500GB'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
                     </div>
                 </div>
                 <!-- Ejemplo de producto -->
@@ -92,7 +99,7 @@
                         <h3 class="part-title">Memoria RAM 8GB DDR4</h3>
                         <p class="part-description">Memoria de segunda mano en perfectas condiciones. Testeada y con garantía.</p>
                         <p class="part-price">$40.00</p>
-                        <a href="https://wa.me/11234567890?text=Hola,%20estoy%20interesado%20en%20la%20'Memoria%20RAM%208GB%20DDR4'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20la%20'Memoria%20RAM%208GB%20DDR4'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
                     </div>
                 </div>
                 <!-- Ejemplo de producto -->
@@ -103,7 +110,7 @@
                         <h3 class="part-title">Tarjeta Gráfica RTX 3060</h3>
                         <p class="part-description">Potencia tus juegos y aplicaciones de diseño con esta tarjeta de última generación.</p>
                         <p class="part-price">$350.00</p>
-                        <a href="https://wa.me/11234567890?text=Hola,%20estoy%20interesado%20en%20la%20'Tarjeta%20Gráfica%20RTX%203060'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20la%20'Tarjeta%20Gráfica%20RTX%203060'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
                     </div>
                 </div>
                 <!-- Ejemplo de producto -->
@@ -114,7 +121,7 @@
                         <h3 class="part-title">Disco Duro (HDD) 1TB</h3>
                         <p class="part-description">Gran capacidad de almacenamiento para tus archivos, fotos y videos. Verificado.</p>
                         <p class="part-price">$30.00</p>
-                        <a href="https://wa.me/11234567890?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20Duro%20(HDD)%201TB'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20Duro%20(HDD)%201TB'" target="_blank" class="buy-button">Comprar por WhatsApp</a>
                     </div>
                 </div>
                 <!-- Agrega más productos aquí -->
@@ -129,8 +136,12 @@
                     <div class="stripe-divider left"></div>
                     <p>Completa el formulario y te contactaremos a la brevedad para confirmar tu cita. ¡Recupera el rendimiento de tus equipos con nosotros!</p>
                     <div class="direct-contact">
+                        <div class="service-charge-note">
+                            <i class="fas fa-info-circle"></i>
+                            <p><strong>Nota:</strong> Se aplica un cargo por revisión que se descuenta del total si se realiza el servicio.</p>
+                        </div>
                         <h4>O contáctanos directamente:</h4>
-                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>+1 (123) 456-7890</strong></p>
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>+1 (849) 436-2242</strong></p>
                         <p><i class="fas fa-map-marker-alt"></i> Estamos en: <strong>Moca, República Dominicana</strong></p>
                     </div>
                 </div>
@@ -178,7 +189,7 @@
     </main>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/11234567890" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+    <a href="https://wa.me/18494362242" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -189,11 +200,11 @@
             <ul class="social-links">
                 <li><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="https://wa.me/11234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                <li><a href="https://wa.me/18494362242" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 HERCOM. Todos los derechos reservados. | Tel/WhatsApp: +1 (123) 456-7890</p>
+            <p>&copy; 2024 HERCOM. Todos los derechos reservados. | Tel/WhatsApp: +1 (849) 436-2242</p>
         </div>
     </footer>
 
