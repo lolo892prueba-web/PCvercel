@@ -1,296 +1,353 @@
-/* --- Variables de Color y Estilos Base --- */
+/* --- THEME VARIABLES & GENERAL STYLES --- */
 :root {
-    --color-dark: #0a0a0f;
-    --color-blue-panel: #0d1a3a;
-    --color-accent-red: #e60023;
-    --color-light: #ffffff;
-    --color-blue-glow: #00aaff;
+    /* Dark Theme (Default) */
+    --bg-color: #121212;
+    --bg-secondary-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --primary-color: #ffffff;
+    --accent-color: #e60023; /* Rojo Intenso */
+    --accent-hover-color: #ff3355;
+    --border-color: #333333;
+    --shadow-color: rgba(230, 0, 35, 0.2);
+
+    --font-family: 'Exo 2', sans-serif;
+}
+
+body.light-theme {
+    /* Light Theme */
+    --bg-color: #f4f4f9;
+    --bg-secondary-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #1a1a1a;
+    --accent-color: #e60023;
+    --accent-hover-color: #c4001b;
+    --border-color: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    /* Fondo con más profundidad */
-    background-color: #000;
-    background-image: radial-gradient(circle at top right, var(--color-blue-panel) -10%, var(--color-dark) 40%);
-    color: var(--color-light);
-    font-family: 'Exo 2', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    overflow-x: hidden; /* Previene el desbordamiento horizontal */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
-/* --- Divisor de Franjas --- */
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 .stripe-divider {
-    height: 5px;
     width: 100px;
-    margin: 1rem auto;
-    background: repeating-linear-gradient(
-        45deg,
-        var(--color-accent-red),
-        var(--color-accent-red) 10px,
-        var(--color-light) 10px,
-        var(--color-light) 20px
-    );
-    border-radius: 5px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 10px auto 30px;
+    border-radius: 2px;
 }
 
-.stripe-divider.left {
-    margin: 1rem 0;
+section {
+    padding: 60px 20px;
+    text-align: center;
 }
 
-
-/* --- Cabecera --- */
+/* --- HEADER & NAVIGATION --- */
 .main-header {
-    background-color: rgba(0,0,0,0.5);
-    text-align: center;
-    padding: 3rem 1rem;
-    border-bottom: 3px solid var(--color-accent-red);
-}
-
-.main-header h1 {
-    margin: 0;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--color-blue-glow);
-    text-shadow: 0 0 5px var(--color-blue-glow), 0 0 15px rgba(0, 170, 255, 0.5);
-}
-
-/* --- Paneles Principales --- */
-.services-panel, .booking-panel {
-    padding: 3rem 1rem;
-    text-align: center;
-}
-
-.services-panel {
-    background-color: var(--color-dark);
-}
-
-.booking-panel {
-    background-color: transparent;
-}
-
-h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
-
-/* --- Tarjetas de Servicios --- */
-.service-cards {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
-.card {
-    background: linear-gradient(145deg, #1a1a2e, #0d1a3a);
-    border: 2px solid var(--color-blue-glow);
-    border-radius: 10px;
-    padding: 1.5rem;
-    width: 300px;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    /* Animación de entrada */
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Animación escalonada para las tarjetas */
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.4s; }
-
-.card-icon {
-    font-size: 2.5rem;
-    color: var(--color-accent-red);
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px var(--color-accent-red);
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(0, 170, 255, 0.7);
-    border-color: var(--color-light);
-}
-
-.card h3 {
-    color: var(--color-blue-glow);
-    margin-top: 0;
-    font-size: 1.5rem;
-}
-
-/* --- Formulario de Citas --- */
-.booking-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.direct-contact {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: rgba(13, 26, 58, 0.5);
-    border-left: 3px solid var(--color-accent-red);
-    border-radius: 0 5px 5px 0;
-}
-
-.direct-contact h4 {
-    margin-top: 0;
-}
-
-.direct-contact p i {
-    color: var(--color-blue-glow);
-}
-
-#booking-form {
-    max-width: 600px;
-    margin: 2rem auto 0;
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-select,
-textarea {    
-    width: 100%;
-    padding: 0.8rem;
-    background-color: rgba(10, 10, 15, 0.8);
-    border: 1px solid var(--color-blue-panel);
-    border-radius: 5px;
-    color: var(--color-light);
-    font-family: 'Exo 2', sans-serif;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 0 10px var(--color-blue-glow);
-}
-
-.cta-button {
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--color-accent-red);
-    color: var(--color-light);
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #ff0033;
-    transform: scale(1.02);
-}
-
-/* --- Pie de Página --- */
-.main-footer {
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    background-color: var(--color-dark);
-    border-top: 2px solid #222;
-    font-size: 0.9rem;
-}
-
-/* --- Botón Flotante de WhatsApp --- */
-.whatsapp-float {
+    background-color: var(--bg-secondary-color);
+    box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25D366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    z-index: 100;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 80px;
+}
+
+.nav-logo {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=2042') no-repeat center center/cover;
+    color: #fff;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    padding-top: 80px;
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    background-color: #128C7E;
+.hero-title {
+    font-size: 3.5em;
+    font-weight: 900;
+    margin-bottom: 0.5em;
+    color: #fff;
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
-/* Tooltip para el botón de WhatsApp */
-.whatsapp-float::before {
-    content: attr(data-tooltip);
+.hero-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.cta-button:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-3px);
+}
+
+/* --- SERVICES & PARTS SECTIONS --- */
+.services-panel {
+    background-color: var(--bg-secondary-color);
+    transition: background-color 0.3s ease;
+}
+
+.service-cards, .parts-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card, .part-card {
+    background: var(--bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover, .part-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.card-icon {
+    font-size: 3em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.part-card {
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+.part-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.part-info { padding: 20px; position: relative; }
+.part-condition {
     position: absolute;
-    right: 70px; /* Posición a la izquierda del botón */
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--color-dark);
-    color: var(--color-light);
-    padding: 5px 10px;
+    top: 20px;
+    right: 20px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #fff;
+}
+.part-condition.new { background-color: #28a745; }
+.part-condition.used { background-color: #ffc107; color: #333; }
+.part-title { margin: 10px 0; font-size: 1.2em; }
+.part-description { font-size: 0.9em; color: var(--text-color); min-height: 50px; }
+.part-price { font-size: 1.5em; font-weight: 700; color: var(--accent-color); margin-top: 15px; }
+
+.buy-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #25D366; /* Color de WhatsApp */
+    color: #fff;
+    text-align: center;
     border-radius: 5px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    text-decoration: none;
+    font-weight: 700;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
-.whatsapp-float:hover::before {
-    opacity: 1;
+.buy-button:hover { background-color: #128C7E; }
+
+/* --- BOOKING SECTION --- */
+.booking-panel {
+    background-color: var(--bg-secondary-color);
+    transition: background-color 0.3s ease;
 }
 
-/* --- Animaciones --- */
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.booking-container {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 40px var(--shadow-color);
+    overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
-/* --- Diseño Responsivo --- */
-@media (min-width: 992px) {
-    .booking-container {
-        flex-direction: row;
-        align-items: center;
-    }
-    .booking-info, #booking-form {
-        flex: 1;
-    }
-    #booking-form {
-        margin-top: 0;
-    }
-    .main-header h1 {
-        font-size: 4.5rem;
-    }
-    .main-footer p {
-        font-size: 1rem;
-    }
+.booking-info {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 40px;
+    width: 40%;
+    text-align: left;
+}
+
+.booking-info h2, .booking-info h4 { color: #fff; }
+.booking-info .stripe-divider.left { margin: 10px 0 30px; background-color: #fff; }
+.direct-contact p { margin: 10px 0; display: flex; align-items: center; }
+.direct-contact i { margin-right: 10px; }
+
+#booking-form {
+    padding: 40px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group { width: 100%; }
+
+#booking-form input,
+#booking-form select,
+#booking-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#booking-form input:focus,
+#booking-form select:focus,
+#booking-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* --- TESTIMONIALS & FOOTER --- */
+.testimonial-card {
+    background: var(--bg-secondary-color);
+    padding: 30px;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    width: 400px;
+    font-style: italic;
+    transition: background-color 0.3s ease;
+}
+.testimonial-author {
+    font-weight: 700;
+    font-style: normal;
+    text-align: right;
+    margin-top: 15px;
+    color: var(--accent-color);
+}
+
+.main-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px 10px;
+    text-align: center;
+}
+.footer-content h3 { color: #fff; }
+.social-links { list-style: none; padding: 0; margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
+.social-links a { color: #fff; font-size: 1.5em; transition: color 0.3s ease; }
+.social-links a:hover { color: var(--accent-color); }
+.footer-bottom { border-top: 1px solid #444; padding-top: 20px; font-size: 0.9em; color: #ccc; }
+
+/* --- WHATSAPP FLOAT BUTTON --- */
+.whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease; }
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    .booking-container { flex-direction: column; }
+    .booking-info, #booking-form { width: 100%; box-sizing: border-box; }
 }
 
 @media (max-width: 768px) {
-    .whatsapp-float { bottom: 20px; right: 20px; }
-    .whatsapp-float:hover::before { opacity: 0; } /* Ocultar tooltip en móvil */
+    .nav-menu { display: none; /* Implementar menú hamburguesa aquí */ }
+    .hero-title { font-size: 2.5em; }
+    .service-cards, .parts-container, .testimonial-cards { flex-direction: column; align-items: center; }
+    .card, .part-card, .testimonial-card { width: 90%; max-width: 400px; }
 }
