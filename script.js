@@ -33,7 +33,89 @@ const applyTheme = (theme) => {
 const savedTheme = localStorage.getItem('theme') || 'dark';
 applyTheme(savedTheme);
 
+// --- THEME SWITCHER LOGIC ---
+themeToggleButton.addEventListener('click', () => {
+    const isLight = body.classList.toggle('light-theme');
+    const newTheme = isLight ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme); // Guardar preferencia
+    applyTheme(newTheme);
+});
 
+// --- HAMBURGER MENU ---
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Cierra el menú al hacer clic en un enlace
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
+// --- DELIVERY CALCULATOR ---
+const sectorSelect = document.getElementById('sector-select');
+const deliveryResultEl = document.getElementById('delivery-result');
+
+// 1. Coordenadas de tu local (Calle Tunti Cáceres esq. 16 de Agosto)
+const localCoords = { lat: 19.3933, lon: -70.5269 };
+
+// 2. Coordenadas de los sectores de Moca
+const sectorCoords = {
+    'centro': { lat: 19.3949, lon: -70.5267 },
+    'viejopr': { lat: 19.3900, lon: -70.5280 },
+    'isleta': { lat: 19.3985, lon: -70.5255 },
+    'robles': { lat: 19.3981, lon: -70.5325 },
+    'donbosco': { lat: 19.3888, lon: -70.5235 },
+    'lopez': { lat: 19.4058, lon: -70.5204 },
+    'espanola': { lat: 19.3833, lon: -70.5311 },
+    'carolina': { lat: 19.3855, lon: -70.5377 },
+    'corozo': { lat: 19.4155, lon: -70.5313 },
+    'milagrosa': { lat: 19.3800, lon: -70.5200 },
+    'guauci': { lat: 19.4333, lon: -70.5167 },
+    'sanvictor': { lat: 19.4500, lon: -70.5833 },
+    'colinas': { lat: 19.3750, lon: -70.5350 },
+    'caimito': { lat: 19.4167, lon: -70.4833 },
+    'estancia': { lat: 19.3667, lon: -70.5167 },
+    'ermita': { lat: 19.3917, lon: -70.5000 },
+    'juanlopito': { lat: 19.3500, lon: -70.5333 }
+};
+
+// 3. Función para calcular la distancia en KM (Fórmula de Haversine)
+function getDistance(coords1, coords2) {
+    const R = 6371; // Radio de la Tierra en km
+    const dLat = (coords2.lat - coords1.lat) * (Math.PI / 180);
+    const dLon = (coords2.lon - coords1.lon) * (Math.PI / 180);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(coords1.lat * (Math.PI / 180)) * Math.cos(coords2.lat * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // Distancia en km
+}
+
+// 4. Función para calcular el costo basado en la distancia
+function calculateDeliveryCost(distance) {
+    const baseFare = 100; // Tarifa base en RD$
+    const pricePerKm = 25; // Precio por km en RD$
+    if (distance < 1.5) return baseFare; // Si está muy cerca, se cobra la tarifa base
+    const totalCost = baseFare + ((distance - 1.5) * pricePerKm); // Se cobra extra por KM adicional a la base
+    return Math.ceil(totalCost / 10) * 10; // Redondear al múltiplo de 10 más cercano
+}
+
+// Evento que se dispara cuando el usuario cambia la selección del sector
+sectorSelect.addEventListener('change', (event) => {
+    const selectedSectorId = event.target.value;
+    if (selectedSectorId && sectorCoords[selectedSectorId]) {
+        const destinationCoords = sectorCoords[selectedSectorId];
+        const distance = getDistance(localCoords, destinationCoords);
+        const cost = calculateDeliveryCost(distance);
+        deliveryResultEl.innerHTML = `Distancia: ${distance.toFixed(1)} km. Costo de envío: <strong>RD$ ${cost}</strong>`;
+    } else {
+        deliveryResultEl.innerHTML = ''; // Limpia el resultado si no se selecciona nada
+    }
+});
 
 // Configuración de Firebase (reemplaza con tus credenciales reales desde Firebase Console)
 const firebaseConfig = {
@@ -89,19 +171,11 @@ const bookingForm = document.getElementById('booking-form');
 bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevenir el envío por defecto
 
-    // --- THEME SWITCHER LOGIC ---
-    themeToggleButton.addEventListener('click', () => {
-        const isLight = body.classList.toggle('light-theme');
-        const newTheme = isLight ? 'light' : 'dark';
-        localStorage.setItem('theme', newTheme); // Guardar preferencia
-        applyTheme(newTheme);
-    });
-
     // Validar formulario
     if (!validateForm()) return;
 
     // Mostrar loading
-    const submitButton = document.querySelector('.cta-button');
+    const submitButton = bookingForm.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     submitButton.innerHTML = '<div class="spinner"></div>Enviando...';
     submitButton.disabled = true;
