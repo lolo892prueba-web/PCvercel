@@ -175,6 +175,21 @@ section {
     transition: background-color 0.3s ease;
 }
 
+.parts-panel {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+    padding: 80px 20px;
+}
+
+.section-subtitle {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .delivery-info {
     display: inline-block;
     margin-top: 10px;
@@ -216,36 +231,70 @@ section {
     padding: 0;
     text-align: left;
     overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.part-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .part-card img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.part-card:hover img {
+    transform: scale(1.05);
 }
 
 .part-card-info {
-    padding: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .part-name {
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 .part-description {
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: var(--text-color);
-    min-height: 40px;
-    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
 }
 
 .part-price {
-    font-size: 1.4em;
-    font-weight: 700;
+    font-size: 1.6em;
+    font-weight: 900;
     color: var(--accent-color);
-    margin-bottom: 20px;
+    margin: 10px 0;
+    text-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.part-card .cta-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    padding: 14px 20px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.part-card .cta-button i {
+    font-size: 1.1em;
 }
 
 /* --- BOOKING SECTION --- */
