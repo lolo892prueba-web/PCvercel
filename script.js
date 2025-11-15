@@ -171,14 +171,28 @@ Por favor, contactar al cliente para coordinar la cita.
         componentes.forEach(componente => {
             const partCard = document.createElement('div');
             partCard.className = 'part-card';
-            const whatsappMessage = `Hola, estoy interesado en comprar el componente: ${componente.nombre}`;
+            
+            // Crear mensaje de WhatsApp con la imagen incluida
+            const whatsappMessage = `🛒 *Solicitud de Compra - HERCOM*
+
+*Producto:* ${componente.nombre}
+*Precio:* RD$ ${parseFloat(componente.precio).toFixed(2)}
+*Descripción:* ${componente.descripcion}
+
+📷 *Imagen del producto:*
+${componente.imagen}
+
+Hola, estoy interesado en comprar este componente. ¿Está disponible?`;
+            
             partCard.innerHTML = `
-                <img src="${componente.imagen}" alt="${componente.nombre}">
+                <img src="${componente.imagen}" alt="${componente.nombre}" loading="lazy">
                 <div class="part-card-info">
                     <h3 class="part-name">${componente.nombre}</h3>
                     <p class="part-description">${componente.descripcion}</p>
                     <p class="part-price">RD$ ${parseFloat(componente.precio).toFixed(2)}</p>
-                    <a href="https://wa.me/18494362242?text=${encodeURIComponent(whatsappMessage)}" class="cta-button" target="_blank">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/18494362242?text=${encodeURIComponent(whatsappMessage)}" class="cta-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar por WhatsApp
+                    </a>
                 </div>`;
             container.appendChild(partCard);
         });
