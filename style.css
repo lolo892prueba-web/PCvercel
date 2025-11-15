@@ -2,7 +2,7 @@
 :root {
     /* Dark Theme (Default) */
     --bg-color: #121212;
-    --bg-secondary-color: #1e1e1e;
+    --bg-secondary-color: #1a1a1a;
     --text-color: #e0e0e0;
     --primary-color: #ffffff;
     --accent-color: #e60023; /* Rojo Intenso */
@@ -13,7 +13,7 @@
     --font-family: 'Exo 2', sans-serif;
 }
 
-body.light-theme {
+body.light-mode {
     /* Light Theme */
     --bg-color: #f4f4f9;
     --bg-secondary-color: #ffffff;
@@ -126,7 +126,7 @@ section {
 
 /* --- HERO SECTION --- */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=2042') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555774698-0b77e0abfe3d?q=80&w=2070') no-repeat center center/cover;
     color: #fff;
     height: 80vh;
     display: flex;
@@ -225,39 +225,28 @@ section {
     display: block;
 }
 
-.part-info { padding: 20px; position: relative; }
-.part-condition {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: 700;
-    color: #fff;
-}
-.part-condition.new { background-color: #28a745; }
-.part-condition.used { background-color: #ffc107; color: #333; }
-.part-title { margin: 10px 0; font-size: 1.2em; }
-.part-description { font-size: 0.9em; color: var(--text-color); min-height: 50px; }
-.part-price { font-size: 1.5em; font-weight: 700; color: var(--accent-color); margin-top: 15px; }
-
-.buy-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    background-color: #25D366; /* Color de WhatsApp */
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 700;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease;
+.part-card-info {
+    padding: 20px;
 }
 
-.buy-button:hover { background-color: #128C7E; }
+.part-name {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.part-description {
+    font-size: 0.9em;
+    color: var(--text-color);
+    min-height: 40px;
+    margin-bottom: 15px;
+}
+
+.part-price {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
 
 /* --- BOOKING SECTION --- */
 .booking-panel {
@@ -328,7 +317,7 @@ section {
     color: #fff;
 }
 
-#booking-form {
+.booking-form-container {
     padding: 40px;
     width: 60%;
     display: flex;
@@ -338,9 +327,9 @@ section {
 
 .form-group { width: 100%; }
 
-#booking-form input,
-#booking-form select,
-#booking-form textarea {
+.booking-form-container input,
+.booking-form-container select,
+.booking-form-container textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid var(--border-color);
@@ -353,11 +342,37 @@ section {
     transition: border-color 0.3s, background-color 0.3s;
 }
 
-#booking-form input:focus,
-#booking-form select:focus,
-#booking-form textarea:focus {
+.booking-form-container input:focus,
+.booking-form-container select:focus,
+.booking-form-container textarea:focus {
     outline: none;
     border-color: var(--accent-color);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.form-buttons .cta-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.whatsapp-btn { background-color: #25D366; }
+.whatsapp-btn:hover { background-color: #128C7E; }
+
+.email-btn { background-color: #6c757d; }
+.email-btn:hover { background-color: #5a6268; }
+
+.form-error-message {
+    color: var(--accent-hover-color);
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 /* --- TESTIMONIALS & FOOTER --- */
@@ -397,7 +412,7 @@ section {
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 992px) {
     .booking-container { flex-direction: column; }
-    .booking-info, #booking-form { width: 100%; box-sizing: border-box; }
+    .booking-info, .booking-form-container { width: 100%; box-sizing: border-box; }
 }
 
 @media (max-width: 768px) {
@@ -430,4 +445,5 @@ section {
     .hero-title { font-size: 2.5em; }
     .service-cards, .parts-container, .testimonial-cards { flex-direction: column; align-items: center; }
     .card, .part-card, .testimonial-card { width: 90%; max-width: 400px; }
+    .form-buttons { flex-direction: column; }
 }
