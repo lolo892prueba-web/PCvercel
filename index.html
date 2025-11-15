@@ -11,6 +11,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
 
+    <!-- Política de Seguridad de Contenido (CSP) para Cordova - SOLUCIÓN DEFINITIVA -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000; img-src 'self' data: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com;">
+
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#e60023">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,21 +55,7 @@
             <h2>Nuestros Servicios</h2>
             <div class="stripe-divider"></div>
             <div class="service-cards">
-                <div class="card">
-                    <i class="fas fa-laptop-code card-icon"></i>
-                    <h3>Reparación de Laptops</h3>
-                    <p>Solucionamos problemas de hardware, software, pantallas rotas, baterías y más.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-desktop card-icon"></i>
-                    <h3>Reparación de PCs</h3>
-                    <p>Desde optimización de rendimiento hasta montaje de componentes y solución de errores complejos.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-print card-icon"></i>
-                    <h3>Reparación de Impresoras</h3>
-                    <p>Resolvemos atascos de papel, problemas con cartuchos de tinta y fallos de conexión.</p>
-                </div>
+                <!-- Los servicios se cargarán aquí dinámicamente -->
             </div>
         </section>
 
@@ -80,51 +69,30 @@
                 </strong>
             </p>
             <div class="parts-container">
-                <!-- Ejemplo de producto -->
+                <!-- 
+                    ESTRUCTURA DE EJEMPLO PARA UN COMPONENTE.
+                    Esta estructura se puede replicar dinámicamente con JavaScript 
+                    al cargar los datos desde la API. 
+                    Asegúrate de que la API devuelva una URL para la imagen.
+                -->
                 <div class="part-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=SSD+500GB" alt="Disco SSD de 500GB">
-                    <div class="part-info">
-                        <span class="part-condition new">Nuevo</span>
-                        <h3 class="part-title">Disco de Estado Sólido (SSD) 500GB</h3>
-                        <p class="part-description">Aumenta la velocidad de tu equipo 10 veces. Ideal para sistema operativo y programas.</p>
-                        <p class="part-price">RD$ 4,800</p>
-                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20de%20Estado%20Sólido%20(SSD)%20500GB'%20que%20vi%20en%20su%20página%20web." target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                    <img src="https://fullh4rd.com.ar/img/productos/4/memoria-8gb-ddr4-3200-kingston-value-ram-kvr-0.jpg" alt="Memoria RAM DDR4">
+                    <div class="part-card-info">
+                        <h3 class="part-name">Memoria RAM 8GB DDR4</h3>
+                        <p class="part-description">Memoria RAM para laptop, marca Kingston. Condición: Nueva.</p>
+                        <p class="part-price">RD$ 2,500.00</p>
+                        <a href="https://fullh4rd.com.ar/img/productos/4/memoria-8gb-ddr4-3200-kingston-value-ram-kvr-0.jpg" class="cta-button" target="_blank">Comprar por WhatsApp</a>
                     </div>
                 </div>
-                <!-- Ejemplo de producto -->
-                <div class="part-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=RAM+8GB+DDR4" alt="Memoria RAM 8GB DDR4">
-                    <div class="part-info">
-                        <span class="part-condition used">Usado</span>
-                        <h3 class="part-title">Memoria RAM 8GB DDR4</h3>
-                        <p class="part-description">Memoria de segunda mano en perfectas condiciones. Testeada y con garantía.</p>
-                        <p class="part-price">RD$ 2,200</p>
-                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20la%20'Memoria%20RAM%208GB%20DDR4'%20que%20vi%20en%20su%20página%20web." target="_blank" class="buy-button">Comprar por WhatsApp</a>
+                 <div class="part-card">
+                    <img src="https://sis.omega.com.do/ProductImages/b0a92eb2-9541-4aa6-9093-77968db1f11f.png" alt="Disco de Estado Sólido (SSD)">
+                    <div class="part-card-info">
+                        <h3 class="part-name">SSD 240GB SATA</h3>
+                        <p class="part-description">Disco de estado sólido para PC o Laptop. Condición: Nuevo.</p>
+                        <p class="part-price">RD$ 1,800.00</p>
+                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20SSD%20240GB%20SATA" class="cta-button" target="_blank">Comprar por WhatsApp</a>
                     </div>
                 </div>
-                <!-- Ejemplo de producto -->
-                <div class="part-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Tarjeta+Gráfica" alt="Tarjeta Gráfica">
-                    <div class="part-info">
-                        <span class="part-condition new">Nuevo</span>
-                        <h3 class="part-title">Tarjeta Gráfica RTX 3060</h3>
-                        <p class="part-description">Potencia tus juegos y aplicaciones de diseño con esta tarjeta de última generación.</p>
-                        <p class="part-price">RD$ 20,000</p>
-                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20la%20'Tarjeta%20Gráfica%20RTX%203060'%20que%20vi%20en%20su%20página%20web." target="_blank" class="buy-button">Comprar por WhatsApp</a>
-                    </div>
-                </div>
-                <!-- Ejemplo de producto -->
-                <div class="part-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=HDD+1TB" alt="Disco Duro 1TB">
-                    <div class="part-info">
-                        <span class="part-condition used">Usado</span>
-                        <h3 class="part-title">Disco Duro (HDD) 1TB</h3>
-                        <p class="part-description">Gran capacidad de almacenamiento para tus archivos, fotos y videos. Verificado.</p>
-                        <p class="part-price">RD$ 1,700</p>
-                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20el%20'Disco%20Duro%20(HDD)%201TB'%20que%20vi%20en%20su%20página%20web." target="_blank" class="buy-button">Comprar por WhatsApp</a>
-                    </div>
-                </div>
-                <!-- Agrega más productos aquí -->
             </div>
         </section>
 
@@ -143,24 +111,7 @@
                         <div class="delivery-calculator">
                             <h4>Calcula el costo de tu delivery en Moca</h4>
                             <select id="sector-select" class="sector-select">
-                                <option value="">-- Selecciona tu sector --</option>
-                                <option value="centro">Centro de la Ciudad</option>
-                                <option value="viejopr">Barrio Viejo Puerto Rico</option>
-                                <option value="isleta">La Isleta</option>
-                                <option value="robles">Los Robles</option>
-                                <option value="donbosco">Don Bosco</option>
-                                <option value="lopez">Los López</option>
-                                <option value="espanola">La Española</option>
-                                <option value="carolina">Villa Carolina</option>
-                                <option value="corozo">El Corozo</option>
-                                <option value="milagrosa">La Milagrosa</option>
-                                <option value="guauci">Guauci</option>
-                                <option value="sanvictor">San Víctor</option>
-                                <option value="colinas">Las Colinas</option>
-                                <option value="caimito">El Caimito</option>
-                                <option value="estancia">Estancia Nueva</option>
-                                <option value="ermita">La Ermita</option>
-                                <option value="juanlopito">Juan Lopito</option>
+                                <option value="">Cargando sectores...</option>
                             </select>
                             <p id="delivery-result" class="delivery-result"></p>
                         </div>
@@ -169,7 +120,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> Estamos en: <strong>Moca, República Dominicana</strong></p>
                     </div>
                 </div>
-                <form id="booking-form">
+                <div id="booking-form-container" class="booking-form-container">
                     <div class="form-group">
                         <input type="text" id="name" name="name" required placeholder="Nombre Completo">
                     </div>
@@ -190,8 +141,12 @@
                     <div class="form-group">
                         <textarea id="issue" name="issue" rows="4" required placeholder="Describe el problema de tu equipo..."></textarea>
                     </div>
-                    <button type="submit" class="cta-button form-button">Enviar Solicitud</button>
-                </form>
+                    <div class="form-buttons">
+                        <button id="send-whatsapp" class="cta-button whatsapp-btn"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+                        <button id="send-email" class="cta-button email-btn"><i class="fas fa-envelope"></i> Enviar por Email</button>
+                    </div>
+                    <p id="form-error" class="form-error-message" style="display: none;">Por favor, completa todos los campos.</p>
+                </div>
             </div>
         </section>
 
@@ -201,12 +156,12 @@
             <div class="stripe-divider"></div>
             <div class="testimonial-cards">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"¡Servicio increíble! Mi laptop estaba muy lenta y ahora funciona como nueva. ¡Totalmente recomendados!"</p>
-                    <p class="testimonial-author">- Cliente Satisfecho</p>
+                    <p class="testimonial-text">"Mi laptop para la universidad estaba muy lenta. El equipo de HERCOM le hizo un mantenimiento completo y ahora vuela. ¡Un servicio excelente y rápido!"</p>
+                    <p class="testimonial-author">- Ana Rodríguez, Estudiante</p>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Rápidos, profesionales y honestos. Arreglaron mi impresora en menos de 24 horas. ¡Excelente trabajo!"</p>
-                    <p class="testimonial-author">- Otro Cliente Feliz</p>
+                    <p class="testimonial-text">"Se me dañó el disco duro de la PC del negocio y pensé que había perdido todo. No solo recuperaron mi información, sino que instalaron un SSD y ahora todo es más rápido."</p>
+                    <p class="testimonial-author">- Carlos Javier, Comerciante</p>
                 </div>
             </div>
         </section>
@@ -222,8 +177,8 @@
             <h3>HERCOM</h3>
             <p>Tu aliado en soluciones tecnológicas en Moca, República Dominicana.</p>
             <ul class="social-links">
-                <li><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/tu-pagina" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/tu-perfil" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                 <li><a href="https://wa.me/18494362242" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
             </ul>
         </div>
@@ -232,13 +187,8 @@
         </div>
     </footer>
 
-    <!-- Firebase SDK (colócalo antes de tu propio script.js) -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <!-- Agrega otros servicios de Firebase que necesites, como Auth, Storage, etc. -->
     <script src="script.js"></script>
 </body>
 </html>
-
 
 
