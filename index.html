@@ -12,21 +12,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
 
     <!-- Política de Seguridad de Contenido (CSP) para Cordova - SOLUCIÓN DEFINITIVA -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000; img-src 'self' data: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com;">
-
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000; img-src 'self' data: blob: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com;">
+    
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#e60023">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="HERCOM">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="T.">
+
+    <!-- Estilos adicionales para la imagen de fondo del Hero -->
+    <style>
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/T.png.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            padding-top: 120px; /* Más espacio superior */
+            padding-bottom: 120px;
+            height: auto; /* Altura automática */
+            min-height: 80vh; /* Altura mínima para que se vea bien */
+        }
+        
+        .nav-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .nav-logo-subtitle {
+            font-size: 0.65em;
+            font-weight: 400;
+            color: var(--text-color);
+            margin-top: -5px;
+            opacity: 0.8;
+        }
+
+        .hero-logo {
+            max-width: 300px; /* Tamaño del logo */
+            height: auto;
+            margin-bottom: 2rem; /* Espacio entre el logo y el título */
+        }
+    </style>
 </head>
 <body>
 
     <header class="main-header">
         <nav class="navbar">
-            <a href="#hero" class="nav-logo">HERCOM</a>
+            <div class="nav-logo-container">
+                <a href="hero#" class="nav-logo">HERCOM</a>
+                <span class="nav-logo-subtitle">Tecnologia a tu Alcance</span>
+            </div>
+            
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item"><a href="#services" class="nav-link">Servicios</a></li>
                 <li class="nav-item"><a href="#parts" class="nav-link">Componentes</a></li>
@@ -42,7 +80,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="hero-section">
+        <section id="hero" class="hero-section" role="banner">
             <div class="hero-content">
                 <h1 class="hero-title">Soluciones Rápidas para tus Dispositivos</h1>
                 <p class="hero-subtitle">Reparamos Laptops, PCs e Impresoras con garantía y profesionalismo en Moca.</p>
@@ -69,30 +107,7 @@
                 </strong>
             </p>
             <div class="parts-container">
-                <!-- 
-                    ESTRUCTURA DE EJEMPLO PARA UN COMPONENTE.
-                    Esta estructura se puede replicar dinámicamente con JavaScript 
-                    al cargar los datos desde la API. 
-                    Asegúrate de que la API devuelva una URL para la imagen.
-                -->
-                <div class="part-card">
-                    <img src="https://fullh4rd.com.ar/img/productos/4/memoria-8gb-ddr4-3200-kingston-value-ram-kvr-0.jpg" alt="Memoria RAM DDR4">
-                    <div class="part-card-info">
-                        <h3 class="part-name">Memoria RAM 8GB DDR4</h3>
-                        <p class="part-description">Memoria RAM para laptop, marca Kingston. Condición: Nueva.</p>
-                        <p class="part-price">RD$ 2,500.00</p>
-                        <a href="https://fullh4rd.com.ar/img/productos/4/memoria-8gb-ddr4-3200-kingston-value-ram-kvr-0.jpg" class="cta-button" target="_blank">Comprar por WhatsApp</a>
-                    </div>
-                </div>
-                 <div class="part-card">
-                    <img src="https://sis.omega.com.do/ProductImages/b0a92eb2-9541-4aa6-9093-77968db1f11f.png" alt="Disco de Estado Sólido (SSD)">
-                    <div class="part-card-info">
-                        <h3 class="part-name">SSD 240GB SATA</h3>
-                        <p class="part-description">Disco de estado sólido para PC o Laptop. Condición: Nuevo.</p>
-                        <p class="part-price">RD$ 1,800.00</p>
-                        <a href="https://wa.me/18494362242?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20SSD%20240GB%20SATA" class="cta-button" target="_blank">Comprar por WhatsApp</a>
-                    </div>
-                </div>
+                <!-- Los componentes se cargarán aquí dinámicamente -->
             </div>
         </section>
 
@@ -190,5 +205,4 @@
     <script src="script.js"></script>
 </body>
 </html>
-
 
