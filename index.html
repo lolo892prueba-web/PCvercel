@@ -12,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
 
     <!-- Política de Seguridad de Contenido (CSP) para Cordova - SOLUCIÓN DEFINITIVA -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000; img-src 'self' data: blob: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000 https://api.openrouteservice.org; img-src 'self' data: blob: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com; script-src 'self' 'unsafe-inline';">
+    
+    <!-- No se requiere API key - Usaremos OpenRouteService que es gratuita -->
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#e60023">
@@ -25,7 +27,7 @@
     <!-- Estilos adicionales para la imagen de fondo del Hero -->
     <style>
         .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/T.png.png');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2070');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -70,7 +72,7 @@
                 <li class="nav-item"><a href="#parts" class="nav-link">Componentes</a></li>
                 <li class="nav-item"><a href="#booking" class="nav-link">Agendar Cita</a></li>
                 <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonios</a></li>
-                <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-moon"></i></button></li>
+                <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-sun"></i></button></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
@@ -131,7 +133,7 @@
                             <p id="delivery-result" class="delivery-result"></p>
                         </div>
                         <h4>O contáctanos directamente:</h4>
-                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>+1 (849) 436-2242</strong></p>
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>849-436-2242</strong></p>
                         <p><i class="fas fa-map-marker-alt"></i> Estamos en: <strong>Moca, República Dominicana</strong></p>
                     </div>
                 </div>
@@ -140,7 +142,7 @@
                         <input type="text" id="name" name="name" required placeholder="Nombre Completo">
                     </div>
                     <div class="form-group">
-                        <input type="numero" id="numero" name="numero" required placeholder="Número de Telefono">
+                        <input type="tel" id="phone" name="phone" required placeholder="Ej: 8291234567" title="Ingresa un número de 10 dígitos que comience con 829, 809 o 849" maxlength="10">
                     </div>
                     <div class="form-group">
                         <input type="text" id="location" name="location" required placeholder="Ubicación (Solo Moca, R.D.)">
@@ -157,8 +159,8 @@
                         <textarea id="issue" name="issue" rows="4" required placeholder="Describe el problema de tu equipo..."></textarea>
                     </div>
                     <div class="form-buttons">
-                        <button id="send-whatsapp" class="cta-button whatsapp-btn"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
-                        <button id="send-email" class="cta-button email-btn"><i class="fas fa-envelope"></i> Enviar por Email</button>
+                        <button id="send-whatsapp" class="cta-button whatsapp-btn" disabled><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+                        <button id="send-email" class="cta-button email-btn" disabled><i class="fas fa-envelope"></i> Enviar por Email</button>
                     </div>
                     <p id="form-error" class="form-error-message" style="display: none;">Por favor, completa todos los campos.</p>
                 </div>
@@ -167,16 +169,43 @@
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials-panel">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <div class="stripe-divider"></div>
-            <div class="testimonial-cards">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Mi laptop para la universidad estaba muy lenta. El equipo de HERCOM le hizo un mantenimiento completo y ahora vuela. ¡Un servicio excelente y rápido!"</p>
-                    <p class="testimonial-author">- Ana Rodríguez, Estudiante</p>
+            <div class="section-header-with-action">
+                <h2>Valoraciones de nuestros clientes</h2>
+                <button id="open-review-modal-btn" class="cta-button secondary-cta">
+                    <i class="fas fa-plus-circle"></i> Escribir una Reseña
+                </button>
+            </div>
+
+            <!-- Contenedor para las tarjetas de testimonios -->
+            <div class="testimonial-cards" id="testimonial-cards-container">
+                <!-- Las reseñas se cargarán aquí desde JavaScript -->
+            </div>
+
+            <!-- Mensaje para cuando no hay reseñas (controlado por JS) -->
+            <div class="no-reviews-message" id="no-reviews-container" style="display: none;">
+                <div class="no-reviews-icon">
+                    <i class="fas fa-star"></i>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Se me dañó el disco duro de la PC del negocio y pensé que había perdido todo. No solo recuperaron mi información, sino que instalaron un SSD y ahora todo es más rápido."</p>
-                    <p class="testimonial-author">- Carlos Javier, Comerciante</p>
+                <h3>¡Sé el primero en dejar tu opinión!</h3>
+                <p>Estamos comenzando y nos encantaría conocer tu experiencia con nuestros servicios.</p>
+                <p class="no-reviews-subtitle">Haz clic en "Escribir una Reseña" para compartir tu experiencia.</p>
+            </div>
+
+            <div class="testimonials-summary">
+                <div class="summary-item">
+                    <i class="fas fa-star"></i>
+                    <h3 id="average-rating">-</h3>
+                    <p>Calificación promedio</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-users"></i>
+                    <h3 id="total-reviews">0</h3>
+                    <p>Reseñas recibidas</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-tools"></i>
+                    <h3>100%</h3>
+                    <p>Compromiso con la calidad</p>
                 </div>
             </div>
         </section>
@@ -198,9 +227,42 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 HERCOM. Todos los derechos reservados. | Tel/WhatsApp: +1 (849) 436-2242</p>
+            <p>&copy; 2024 HERCOM. Todos los derechos reservados. | Tel/WhatsApp: 849-436-2242</p>
         </div>
     </footer>
+
+    <!-- Modal para Escribir Reseña -->
+    <div id="review-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="close-review-modal-btn" class="modal-close-btn">&times;</button>
+            <h3>Comparte tu Experiencia</h3>
+            <p>Tu opinión es muy importante para nosotros. Por favor, completa los campos para enviar tu reseña.</p>
+            
+            <div class="form-group">
+                <input type="text" id="review-author" placeholder="Tu Nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tu Calificación:</label>
+                <div class="star-rating-input">
+                    <i class="far fa-star" data-value="1"></i>
+                    <i class="far fa-star" data-value="2"></i>
+                    <i class="far fa-star" data-value="3"></i>
+                    <i class="far fa-star" data-value="4"></i>
+                    <i class="far fa-star" data-value="5"></i>
+                </div>
+                <input type="hidden" id="review-rating" value="0">
+            </div>
+
+            <div class="form-group">
+                <textarea id="review-text" rows="5" placeholder="Escribe tu reseña aquí..." required></textarea>
+            </div>
+
+            <button id="submit-review-btn" class="cta-button"><i class="fab fa-whatsapp"></i> Enviar Reseña para Aprobación</button>
+            <p id="review-form-error" class="form-error-message" style="display: none;"></p>
+            <p class="review-note">Nota: Tu reseña será enviada por WhatsApp para ser revisada antes de su publicación.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
