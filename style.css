@@ -53,6 +53,19 @@ h1, h2, h3 {
     border-radius: 2px;
 }
 
+.section-header-with-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.section-header-with-action h2 { margin: 0; }
+.secondary-cta { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); }
+.secondary-cta:hover { background-color: var(--accent-color); color: #fff; }
+
 section {
     padding: 60px 20px;
     text-align: center;
@@ -126,7 +139,7 @@ section {
 
 /* --- HERO SECTION --- */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555774698-0b77e0abfe3d?q=80&w=2070') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2070') no-repeat center center/cover;
     color: #fff;
     height: 80vh;
     display: flex;
@@ -227,50 +240,67 @@ section {
     margin-bottom: 15px;
 }
 
+/* --- ESTILOS MEJORADOS PARA TARJETAS DE COMPONENTES --- */
 .part-card {
-    padding: 0;
-    text-align: left;
+    background: var(--bg-secondary-color);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 20px var(--shadow-color);
 }
 
 .part-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--shadow-color);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px var(--shadow-color);
+}
+
+.part-card-image-container {
+    width: 100%;
+    height: 250px; /* Altura fija para el contenedor de la imagen */
+    background-color: var(--bg-color); /* Fondo para el 'letterboxing' */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .part-card img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain; /* <-- ESTA ES LA CLAVE: La imagen nunca se corta */
     display: block;
     transition: transform 0.3s ease;
 }
 
 .part-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Sutil zoom sin recortar */
 }
 
 .part-card-info {
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    flex-grow: 1; /* Asegura que el contenedor de info ocupe el espacio restante */
+    text-align: left;
 }
 
 .part-name {
     margin: 0;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 700;
     color: var(--primary-color);
 }
 
 .part-description {
-    font-size: 0.95em;
+    font-size: 0.9em;
     color: var(--text-color);
-    line-height: 1.5;
-    flex-grow: 1;
+    line-height: 1.4;
+    flex-grow: 1; /* Empuja el precio y el botón hacia abajo */
+    margin: 0;
 }
 
 .part-price {
@@ -278,19 +308,19 @@ section {
     font-weight: 900;
     color: var(--accent-color);
     margin: 10px 0;
-    text-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .part-card .cta-button {
     width: 100%;
     text-align: center;
-    margin-top: 10px;
-    padding: 14px 20px;
+    padding: 12px 20px;
     font-size: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    background-color: #25D366; /* Verde WhatsApp */
+    transition: background-color 0.3s ease;
+}
+
+.part-card:hover .cta-button {
+    background-color: #128C7E; /* Verde oscuro de WhatsApp */
 }
 
 .part-card .cta-button i {
@@ -410,13 +440,20 @@ section {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: opacity 0.3s ease, cursor 0.3s ease;
+}
+
+.form-buttons .cta-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .whatsapp-btn { background-color: #25D366; }
-.whatsapp-btn:hover { background-color: #128C7E; }
+.whatsapp-btn:hover:not(:disabled) { background-color: #128C7E; }
 
 .email-btn { background-color: #6c757d; }
-.email-btn:hover { background-color: #5a6268; }
+.email-btn:hover:not(:disabled) { background-color: #5a6268; }
 
 .form-error-message {
     color: var(--accent-hover-color);
@@ -425,21 +462,266 @@ section {
 }
 
 /* --- TESTIMONIALS & FOOTER --- */
+.testimonials-panel {
+    position: relative;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .testimonial-card {
     background: var(--bg-secondary-color);
     padding: 30px;
     border-left: 5px solid var(--accent-color);
     border-radius: 0 8px 8px 0;
-    width: 400px;
-    font-style: italic;
-    transition: background-color 0.3s ease;
+    width: 350px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 5px;
+    color: #FFD700;
+    font-size: 1.1em;
+}
+
+.testimonial-rating {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--accent-color);
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-color);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.testimonial-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
 .testimonial-author {
     font-weight: 700;
     font-style: normal;
-    text-align: right;
-    margin-top: 15px;
+    margin: 0;
     color: var(--accent-color);
+    font-size: 1em;
+}
+
+.testimonial-role {
+    font-size: 0.85em;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin: 5px 0 0 0;
+    font-style: normal;
+}
+
+.no-reviews-message {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    background: var(--bg-secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    border: 2px dashed var(--border-color);
+}
+
+.no-reviews-icon {
+    font-size: 4em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.no-reviews-message h3 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.no-reviews-message p {
+    color: var(--text-color);
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.no-reviews-subtitle {
+    font-size: 0.95em;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.no-reviews-message .cta-button {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.google-review-btn {
+    background-color: #4285F4; /* Color oficial de Google */
+}
+
+.google-review-btn:hover {
+    background-color: #3367D6;
+}
+
+.google-review-note, .whatsapp-review-note {
+    font-size: 0.8em; color: var(--text-color-secondary, #888); margin-top: 1rem; opacity: 0.9;
+}
+.testimonials-summary {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    text-align: center;
+    padding: 20px;
+    background: var(--bg-secondary-color);
+    border-radius: 10px;
+    min-width: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+.summary-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.summary-item i {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.summary-item h3 {
+    font-size: 2.5em;
+    font-weight: 900;
+    color: var(--accent-color);
+    margin: 10px 0;
+}
+
+.summary-item p {
+    color: var(--text-color);
+    font-size: 0.95em;
+    margin: 0;
+}
+
+/* --- MODAL DE RESEÑAS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--bg-secondary-color);
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--text-color);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.modal-close-btn:hover { opacity: 1; }
+
+.modal-content h3 { margin-top: 0; }
+.modal-content .form-group { margin-bottom: 20px; }
+.modal-content .cta-button { width: 100%; }
+.review-note { font-size: 0.8em; opacity: 0.7; text-align: center; margin-top: 15px; }
+
+.star-rating-input {
+    display: flex;
+    gap: 10px;
+    font-size: 2em;
+    color: #FFD700;
+    cursor: pointer;
+}
+
+.star-rating-input i {
+    transition: transform 0.2s ease;
+}
+
+.star-rating-input i:hover {
+    transform: scale(1.2);
+}
+
+.summary-item p {
+    color: var(--text-color);
+    font-size: 0.95em;
+    margin: 0;
 }
 
 .main-footer {
@@ -494,5 +776,9 @@ section {
     .hero-title { font-size: 2.5em; }
     .service-cards, .parts-container, .testimonial-cards { flex-direction: column; align-items: center; }
     .card, .part-card, .testimonial-card { width: 90%; max-width: 400px; }
+    .section-header-with-action {
+        flex-direction: column;
+        text-align: center;
+    }
     .form-buttons { flex-direction: column; }
 }
