@@ -1,11 +1,11 @@
 {
-    "name": "COMPUSERV - Citas para Reparaciones",
-    "short_name": "COMPUSERV",
-    "description": "Agenda tus citas para reparaciones de laptops, PCs e impresoras en Moca, República Dominicana.",
+    "name": "JLGRAPHIC - Diseño Profesional",
+    "short_name": "JLGRAPHIC",
+    "description": "Diseño gráfico profesional. Logos, branding, diseño digital e impreso en Moca, República Dominicana.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#000000",
-    "theme_color": "#e60023",
+    "theme_color": "#ff0000",
     "orientation": "portrait-primary",
     "icons": [
         {
