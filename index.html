@@ -1,271 +1,257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hercom | Citas para Reparaciones</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <!-- Política de Seguridad de Contenido (CSP) para Cordova - SOLUCIÓN DEFINITIVA -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src http://192.168.1.10:3000 https://api.openrouteservice.org; img-src 'self' data: blob: https://sis.omega.com.do https://images.unsplash.com https://www.muycomputer.com; script-src 'self' 'unsafe-inline';">
-    
-    <!-- No se requiere API key - Usaremos OpenRouteService que es gratuita -->
-    
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#e60023">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="HERCOM">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="T.">
-
-    <!-- Estilos adicionales para la imagen de fondo del Hero -->
-    <style>
-        .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2070');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            padding-top: 120px; /* Más espacio superior */
-            padding-bottom: 120px;
-            height: auto; /* Altura automática */
-            min-height: 80vh; /* Altura mínima para que se vea bien */
-        }
-        
-        .nav-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .nav-logo-subtitle {
-            font-size: 0.65em;
-            font-weight: 400;
-            color: var(--text-color);
-            margin-top: -5px;
-            opacity: 0.8;
-        }
-
-        .hero-logo {
-            max-width: 300px; /* Tamaño del logo */
-            height: auto;
-            margin-bottom: 2rem; /* Espacio entre el logo y el título */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>JL Graphic | Diseño Gráfico Profesional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JL Graphic - Diseño gráfico profesional en República Dominicana. Logos, branding, tarjetas de presentación y más.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="nav-logo-container">
-                <a href="hero#" class="nav-logo">HERCOM</a>
-                <span class="nav-logo-subtitle">Tecnologia a tu Alcance</span>
-            </div>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="#services" class="nav-link">Servicios</a></li>
-                <li class="nav-item"><a href="#parts" class="nav-link">Componentes</a></li>
-                <li class="nav-item"><a href="#booking" class="nav-link">Agendar Cita</a></li>
-                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonios</a></li>
-                <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-sun"></i></button></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+  <!-- PARTÍCULAS DE FONDO -->
+  <div class="particles" id="particles"></div>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section" role="banner">
-            <div class="hero-content">
-                <h1 class="hero-title">Soluciones Rápidas para tus Dispositivos</h1>
-                <p class="hero-subtitle">Reparamos Laptops, PCs e Impresoras con garantía y profesionalismo en Moca.</p>
-                <a href="#booking" class="cta-button hero-cta">¡Agenda tu Reparación Ahora!</a>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="services-panel">
-            <h2>Nuestros Servicios</h2>
-            <div class="stripe-divider"></div>
-            <div class="service-cards">
-                <!-- Los servicios se cargarán aquí dinámicamente -->
-            </div>
-        </section>
-
-        <!-- Parts Section -->
-        <section id="parts" class="parts-panel">
-            <h2>Venta de Componentes</h2>
-            <div class="stripe-divider"></div>
-            <p class="section-subtitle">Piezas nuevas y de segunda mano para tus equipos. <br>
-                <strong class="delivery-info">
-                    <i class="fas fa-motorcycle"></i> Pago contra entrega | Costo de delivery adicional | Solo en Moca
-                </strong>
-            </p>
-            <div class="parts-container">
-                <!-- Los componentes se cargarán aquí dinámicamente -->
-            </div>
-        </section>
-
-        <!-- Booking Section -->
-        <section id="booking" class="booking-panel">
-            <div class="booking-container">
-                <div class="booking-info">
-                    <h2>Agenda tu Cita</h2>
-                    <div class="stripe-divider left"></div>
-                    <p>Completa el formulario y te contactaremos a la brevedad para confirmar tu cita. ¡Recupera el rendimiento de tus equipos con nosotros!</p>
-                    <div class="direct-contact">
-                        <div class="service-charge-note">
-                            <i class="fas fa-info-circle"></i>
-                            <p><strong>Nota:</strong> Se aplica un cargo por revisión que se descuenta del total si se realiza el servicio.</p>
-                        </div>
-                        <div class="delivery-calculator">
-                            <h4>Calcula el costo de tu delivery en Moca</h4>
-                            <select id="sector-select" class="sector-select">
-                                <option value="">Cargando sectores...</option>
-                            </select>
-                            <p id="delivery-result" class="delivery-result"></p>
-                        </div>
-                        <h4>O contáctanos directamente:</h4>
-                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>849-436-2242</strong></p>
-                        <p><i class="fas fa-map-marker-alt"></i> Estamos en: <strong>Moca, República Dominicana</strong></p>
-                    </div>
-                </div>
-                <div id="booking-form-container" class="booking-form-container">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder="Nombre Completo">
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" required placeholder="Ej: 8291234567" title="Ingresa un número de 10 dígitos que comience con 829, 809 o 849" maxlength="10">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="location" name="location" required placeholder="Ubicación (Solo Moca, R.D.)">
-                    </div>
-                    <div class="form-group">
-                        <select id="device" name="device" required>
-                            <option value="" disabled selected>Selecciona un tipo de dispositivo</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="pc">PC de Escritorio</option>
-                            <option value="printer">Impresora</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="issue" name="issue" rows="4" required placeholder="Describe el problema de tu equipo..."></textarea>
-                    </div>
-                    <div class="form-buttons">
-                        <button id="send-whatsapp" class="cta-button whatsapp-btn" disabled><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
-                        <button id="send-email" class="cta-button email-btn" disabled><i class="fas fa-envelope"></i> Enviar por Email</button>
-                    </div>
-                    <p id="form-error" class="form-error-message" style="display: none;">Por favor, completa todos los campos.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-panel">
-            <div class="section-header-with-action">
-                <h2>Valoraciones de nuestros clientes</h2>
-                <button id="open-review-modal-btn" class="cta-button secondary-cta">
-                    <i class="fas fa-plus-circle"></i> Escribir una Reseña
-                </button>
-            </div>
-
-            <!-- Contenedor para las tarjetas de testimonios -->
-            <div class="testimonial-cards" id="testimonial-cards-container">
-                <!-- Las reseñas se cargarán aquí desde JavaScript -->
-            </div>
-
-            <!-- Mensaje para cuando no hay reseñas (controlado por JS) -->
-            <div class="no-reviews-message" id="no-reviews-container" style="display: none;">
-                <div class="no-reviews-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3>¡Sé el primero en dejar tu opinión!</h3>
-                <p>Estamos comenzando y nos encantaría conocer tu experiencia con nuestros servicios.</p>
-                <p class="no-reviews-subtitle">Haz clic en "Escribir una Reseña" para compartir tu experiencia.</p>
-            </div>
-
-            <div class="testimonials-summary">
-                <div class="summary-item">
-                    <i class="fas fa-star"></i>
-                    <h3 id="average-rating">-</h3>
-                    <p>Calificación promedio</p>
-                </div>
-                <div class="summary-item">
-                    <i class="fas fa-users"></i>
-                    <h3 id="total-reviews">0</h3>
-                    <p>Reseñas recibidas</p>
-                </div>
-                <div class="summary-item">
-                    <i class="fas fa-tools"></i>
-                    <h3>100%</h3>
-                    <p>Compromiso con la calidad</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/18494362242" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+  <!-- HEADER -->
+  <header class="topbar">
+    <a href="#inicio" class="logo">
+      <img src="img/JL.JPEG.jpeg" alt="JL Graphic Logo" class="logo-img">
+      <span class="logo-text">JLGRAPHIC</span>
     </a>
+    <nav id="nav-menu">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#proyectos" class="nav-link">Portafolio</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+    <div id="hamburger" class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <h3>HERCOM</h3>
-            <p>Tu aliado en soluciones tecnológicas en Moca, República Dominicana.</p>
-            <ul class="social-links">
-                <li><a href="https://www.facebook.com/tu-pagina" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/tu-perfil" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="https://wa.me/18494362242" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
-            </ul>
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>
+          <span class="word">DISEÑO</span>
+          <span class="word">QUE</span>
+          <span class="highlight">IMPACTA</span>
+          <span class="word">Y TRANSFORMA</span>
+        </h1>
+        <p>Creo identidades visuales únicas que conectan con tu audiencia y elevan tu marca al siguiente nivel. Logos, branding y diseños que dejan huella.</p>
+        <div class="cta-buttons">
+          <a href="#proyectos" class="btn btn-primary">
+            <i class="fas fa-rocket"></i>
+            Ver Trabajos
+          </a>
+          <a href="#contacto" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i>
+            Contactar
+          </a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 HERCOM. Todos los derechos reservados. | Tel/WhatsApp: 849-436-2242</p>
+      </div>
+      <div class="hero-showcase">
+        <div class="showcase-item">
+          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800" alt="Diseño 1">
+          <div class="showcase-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
         </div>
-    </footer>
-
-    <!-- Modal para Escribir Reseña -->
-    <div id="review-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <button id="close-review-modal-btn" class="modal-close-btn">&times;</button>
-            <h3>Comparte tu Experiencia</h3>
-            <p>Tu opinión es muy importante para nosotros. Por favor, completa los campos para enviar tu reseña.</p>
-            
-            <div class="form-group">
-                <input type="text" id="review-author" placeholder="Tu Nombre" required>
-            </div>
-
-            <div class="form-group">
-                <label>Tu Calificación:</label>
-                <div class="star-rating-input">
-                    <i class="far fa-star" data-value="1"></i>
-                    <i class="far fa-star" data-value="2"></i>
-                    <i class="far fa-star" data-value="3"></i>
-                    <i class="far fa-star" data-value="4"></i>
-                    <i class="far fa-star" data-value="5"></i>
-                </div>
-                <input type="hidden" id="review-rating" value="0">
-            </div>
-
-            <div class="form-group">
-                <textarea id="review-text" rows="5" placeholder="Escribe tu reseña aquí..." required></textarea>
-            </div>
-
-            <button id="submit-review-btn" class="cta-button"><i class="fab fa-whatsapp"></i> Enviar Reseña para Aprobación</button>
-            <p id="review-form-error" class="form-error-message" style="display: none;"></p>
-            <p class="review-note">Nota: Tu reseña será enviada por WhatsApp para ser revisada antes de su publicación.</p>
+        <div class="showcase-item">
+          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=500" alt="Diseño 2">
+          <div class="showcase-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
         </div>
+        <div class="showcase-item">
+          <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=500" alt="Diseño 3">
+          <div class="showcase-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="servicios">
+    <div class="section-header">
+      <h2>MIS SERVICIOS</h2>
+      <p>Soluciones de diseño profesional para potenciar tu marca</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio">
+        <div class="servicio-icon">
+          <i class="fas fa-pen-nib"></i>
+        </div>
+        <h3>Diseño de Logos</h3>
+        <p>Identidad visual única y memorable que representa la esencia de tu marca</p>
+      </div>
+      <div class="servicio">
+        <div class="servicio-icon">
+          <i class="fas fa-address-card"></i>
+        </div>
+        <h3>Tarjetas de Presentación</h3>
+        <p>Diseños profesionales que causan una primera impresión inolvidable</p>
+      </div>
+      <div class="servicio">
+        <div class="servicio-icon">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <h3>Flyers y Folletos</h3>
+        <p>Material promocional efectivo que comunica tu mensaje claramente</p>
+      </div>
+      <div class="servicio">
+        <div class="servicio-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Branding Completo</h3>
+        <p>Estrategia visual integral para construir una marca sólida y coherente</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO -->
+  <section id="proyectos" class="proyectos">
+    <div class="section-header">
+      <h2>MI PORTAFOLIO</h2>
+      <p>Proyectos que demuestran pasión por el diseño y atención al detalle</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="img/TARJETAS.JPEG.jpeg" alt="Diseño de Tarjetas de Presentación">
+        <div class="portfolio-overlay">
+          <i class="fas fa-plus-circle"></i>
+          <h3>Tarjetas de Presentación</h3>
+          <p>Diseño Profesional</p>
+        </div>
+      </div>
+    <div class="portfolio-item">
+        <!-- Para videos, crea una carpeta 'www/videos/' y ponlos ahí -->
+        <video src="img/boomerang1.mp4" autoplay loop muted playsinline></video>
+        <div class="portfolio-overlay">
+          <i class="fas fa-play-circle"></i>
+          <h3>Motion Graphics</h3>
+          <p>Animación de Marca</p>
+        </div>
+      </div>
+  
+      <div class="portfolio-item">
+        <!-- Para videos, crea una carpeta 'www/videos/' y ponlos ahí -->
+        <video src="img/boomerang2.mp4" autoplay loop muted playsinline></video>
+        <div class="portfolio-overlay">
+          <i class="fas fa-play-circle"></i>
+          <h3>Motion Graphics</h3>
+          <p>Animación de Marca</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <!-- Para videos, crea una carpeta 'www/videos/' y ponlos ahí -->
+        <video src="img/boomerang3.mp4" autoplay loop muted playsinline></video>
+        <div class="portfolio-overlay">
+          <i class="fas fa-play-circle"></i>
+          <h3>Motion Graphics</h3>
+          <p>Animación de Marca</p>
+        </div>
+      </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto">
+    <div class="contacto-left">
+      <h3>¿Listo para Empezar?</h3>
+      <p>Cuéntame sobre tu proyecto y trabajemos juntos para hacer realidad tu visión. Transformemos tu marca con diseño de alto impacto.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Ubicación</strong>
+            <p>República Dominicana</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <strong>Teléfono</strong>
+            <p>849-436-2242</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-instagram"></i>
+          <div>
+            <strong>Instagram</strong>
+            <p>@jl_graphic1420</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="contacto-form">
+      <h3>SOLICITA TU PROYECTO</h3>
+      <div class="form-group">
+        <input id="name" type="text" placeholder="Tu Nombre *" required>
+      </div>
+      <div class="form-group">
+        <input id="email" type="email" placeholder="Tu Correo Electrónico *" required>
+      </div>
+      <div class="form-group">
+        <input id="company" type="text" placeholder="Nombre de tu Empresa (Opcional)">
+      </div>
+      <div class="form-group">
+        <select id="service" required>
+          <option value="" disabled selected>Selecciona un servicio...</option>
+          <option value="Logo">Diseño de Logo</option>
+          <option value="Tarjeta">Tarjeta de Presentación</option>
+          <option value="Flyer">Flyer / Folleto</option>
+          <option value="Branding">Branding Completo</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <textarea id="description" placeholder="Cuéntame sobre tu proyecto... *" required></textarea>
+      </div>
+      <button id="send-whatsapp" class="submit-btn">
+        <i class="fab fa-whatsapp"></i>
+        Enviar por WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- REDES SOCIALES -->
+  <section class="social-media">
+    <div class="section-header">
+      <h2>SÍGUEME</h2>
+      <p>Conecta conmigo en redes sociales</p>
+    </div>
+    <div class="social-icons">
+      <a href="https://instagram.com/jl_graphic1420" target="_blank" class="social-icon" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/18494362242" target="_blank" class="social-icon" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a class="social-icon disabled" aria-label="Facebook (Próximamente)">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>© 2025 JLGRAPHIC</strong></p>
+    <p>Tu Idea En Fuego · Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+
 </body>
-</html>
+    </html>
 
 
