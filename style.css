@@ -406,4 +406,3 @@ input:focus, select:focus, textarea:focus {
     .whatsapp-float:hover::before { opacity: 0; } /* Ocultar tooltip en móvil */
 }
 
-
